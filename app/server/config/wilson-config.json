@@ -1,0 +1,64 @@
+{
+  "client" : {
+
+  },
+  "shared": {
+    "app": {
+      "version" : "0.0.1",
+      "updateInterval": "1 hours"
+    },
+    "i18n": {
+      "extraNamespaces": [
+        "validation-errors",
+        "folder-utility",
+        "file-utility",
+        "time-utility",
+        "billing-config",
+        "sku-config",
+        "batch-errors",
+        "draggable",
+        "plan-parser",
+        "fit-text-collection",
+        "route-titles",
+        "filters"
+      ],
+      "sendMissing": true,
+      "useLocalStorage": false,
+      "localStorageExpirationTime": 604800000
+    },
+    "cdn": false
+  },
+  "server" : {
+    "projectPaths": {
+      "root": "/Users/justin.fiedler/Documents/dev/Wilson/wilson-framework/app",
+      "components": "client/src/components",
+      "services": "client/src/components",
+      "behavior": "client/src/behaviors",
+      "parser": "client/src/services/parsers",
+      "utilities": "client/src/services/utilities",
+      "filters": "client/src/filters",
+      "tagMiddleware": "server/tag-middleware"
+    },
+    "tags": {
+      "brand":       10,
+      "device":       9,
+      "platform":     8,
+      "account":      7,
+      "language":     6,
+      "locale":       5,
+      "pref-locale":  4
+    },
+    "geo": {
+      "implyTimezone": false
+    },
+    "caching": {
+      "useServerCache": false,
+      "maxAge": {
+        "assets":     1000,
+        "appShell":   1000,
+        "components": 1000,
+        "bundles":    1000
+      }
+    }
+  }
+}
