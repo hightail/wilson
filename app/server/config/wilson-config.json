@@ -1,27 +1,16 @@
 {
-  "client" : {
-
-  },
-  "shared": {
+  "client": {
     "app": {
       "version" : "0.0.1",
-      "updateInterval": "1 hours"
+      "updateInterval": "1 hours",
+      "mountpath": "/wilson"
     },
     "i18n": {
-      "extraNamespaces": [
-        "validation-errors",
-        "folder-utility",
-        "file-utility",
-        "time-utility",
-        "billing-config",
-        "sku-config",
-        "batch-errors",
-        "draggable",
-        "plan-parser",
-        "fit-text-collection",
-        "route-titles",
-        "filters"
-      ],
+      "lng": "en",
+      "fallbackLng": "en",
+      "defaultLng": "en",
+      "supportedLngs": ["en"],
+      "namespaces": ["app"],
       "sendMissing": true,
       "useLocalStorage": false,
       "localStorageExpirationTime": 604800000
@@ -29,15 +18,36 @@
     "cdn": false
   },
   "server" : {
+    "deploy": {
+      "mode": "development",
+      "logLevel": "debug",
+      "path": "."
+    },
     "projectPaths": {
       "root": "/Users/justin.fiedler/Documents/dev/Wilson/wilson-framework/app",
       "components": "client/src/components",
-      "services": "client/src/components",
-      "behavior": "client/src/behaviors",
-      "parser": "client/src/services/parsers",
+      "services": "client/src/services",
+      "behaviors": "client/src/behaviors",
+      "parsers": "client/src/services/parsers",
       "utilities": "client/src/services/utilities",
       "filters": "client/src/filters",
-      "tagMiddleware": "server/tag-middleware"
+      "guides":  "client/src/guides",
+      "tagMiddleware": "server/tag-middleware",
+      "routes": "client/routing.json",
+      "IRouteService": "client/src/services/IRouteService.js"
+    },
+    "dependencies": {
+      "ignored": ["localStorageService"],
+      "core": [
+        "AppStateService",
+        "BusFactoryService",
+        "ComponentFactoryService",
+        "ComponentLoaderService",
+        "i18nextService",
+        "ParserFactoryService",
+        "ResourceLoaderService",
+        "StateMachineService"
+      ]
     },
     "tags": {
       "brand":       10,
@@ -53,6 +63,7 @@
     },
     "caching": {
       "useServerCache": false,
+      "folder": "server/.cache",
       "maxAge": {
         "assets":     1000,
         "appShell":   1000,

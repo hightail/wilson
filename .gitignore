@@ -1,0 +1,20 @@
+# vim swap files
+*.swp
+
+# mac
+*.DS_Store
+
+# /
+/.idea
+
+# newrelic log
+newrelic_agent.log
+
+# /src/
+node_modules
+bower_components
+
+client.wilson.js
+client.wilson.min.js
+
+server/.cache

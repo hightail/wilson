@@ -1,0 +1,22 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "component": "home",
+      "title": "__product__",
+      "options": { }
+    },
+    {
+      "path": "/home",
+      "component": "home",
+      "title": "__product__",
+      "options": { }
+    },
+    {
+      "path": null,
+      "title": "404 - __product__",
+      "component": "home",
+      "options": { }
+    }
+  ]
+}
