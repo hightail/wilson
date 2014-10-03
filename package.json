@@ -33,12 +33,12 @@
     "q": "^1.0.1",
     "xmldom": "^0.1.19",
     "winston": "^0.8.0",
-    "intravenous": "^0.1.4-beta",
     "q-io": "^1.11.5",
     "async": "^0.9.0",
     "underscore.string": "^2.3.3",
     "lz-string": "^1.3.3",
-    "dependable": "^0.2.5"
+    "dependable": "^0.2.5",
+    "strip-json-comments": "^1.0.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

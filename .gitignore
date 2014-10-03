@@ -4,8 +4,9 @@
 # mac
 *.DS_Store
 
-# /
+# IntelliJ
 /.idea
+*.iml
 
 # newrelic log
 newrelic_agent.log
@@ -17,4 +18,4 @@ bower_components
 client.wilson.js
 client.wilson.min.js
 
-server/.cache
+**/server/.cache
