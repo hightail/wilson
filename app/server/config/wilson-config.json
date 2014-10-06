@@ -9,11 +9,7 @@
       "lng": "en",
       "fallbackLng": "en",
       "defaultLng": "en",
-      "supportedLngs": ["en","de"],
-      "namespaces": [],
-      "sendMissing": true,
-      "useLocalStorage": false,
-      "localStorageExpirationTime": 604800000
+      "supportedLngs": ["en","de"]
     },
     "cdn": false
   },
@@ -24,18 +20,7 @@
       "path": "."
     },
     "projectPaths": {
-      "root": "/Users/justin.fiedler/Documents/dev/Wilson/wilson-framework/app",
-      "components": "/client/src/components",
-      "services": "/client/src/services",
-      "behaviors": "/client/src/behaviors",
-      "parsers": "/client/src/services/parsers",
-      "utilities": "/client/src/services/utilities",
-      "filters": "/client/src/filters",
-      "guides":  "/client/src/guides",
-      "tagMiddleware": "/server/tag-middleware",
-      "routes": "/client/routing.json",
-      "IRouteService": "/client/src/services/IRouteService.js",
-      "locales": "/client/locales"
+      "root": "app"
     },
     "dependencies": {
       "ignored": [],

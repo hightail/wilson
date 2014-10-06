@@ -24,7 +24,7 @@
       "path": "."
     },
     "projectPaths": {
-      "root": "",
+      "root": "app",
       "components": "/client/src/components",
       "services": "/client/src/services",
       "behaviors": "/client/src/behaviors",
