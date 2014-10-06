@@ -1,7 +1,7 @@
 {
   "client": {
     "app": {
-      "version" : "0.0.1",
+      "version" : "0.0.0",
       "updateInterval": "1 hours",
       "mountpath": "/wilson"
     },
@@ -9,7 +9,7 @@
       "lng": "en",
       "fallbackLng": "en",
       "defaultLng": "en",
-      "supportedLngs": ["en","de"],
+      "supportedLngs": ["en"],
       "namespaces": [],
       "sendMissing": true,
       "useLocalStorage": false,
@@ -24,7 +24,7 @@
       "path": "."
     },
     "projectPaths": {
-      "root": "/Users/justin.fiedler/Documents/dev/Wilson/wilson-framework/app",
+      "root": "",
       "components": "/client/src/components",
       "services": "/client/src/services",
       "behaviors": "/client/src/behaviors",
@@ -38,17 +38,35 @@
       "locales": "/client/locales"
     },
     "dependencies": {
-      "ignored": [],
-      "core": []
+      "ignored": ["localStorageService"],
+      "core": [
+        "AppStateService",
+        "BusFactoryService",
+        "ComponentFactoryService",
+        "ComponentLoaderService",
+        "i18nextService",
+        "ParserFactoryService",
+        "ResourceLoaderService",
+        "StateMachineService"
+      ]
     },
     "tags": {
-      "brand":       10,
-      "device":       9,
-      "platform":     8,
-      "account":      7,
       "language":     6,
       "locale":       5,
       "pref-locale":  4
+    },
+    "geo": {
+      "implyTimezone": false
+    },
+    "caching": {
+      "useServerCache": false,
+      "folder": "server/.cache",
+      "maxAge": {
+        "assets":     1000,
+        "appShell":   1000,
+        "components": 1000,
+        "bundles":    1000
+      }
     }
   }
 }
