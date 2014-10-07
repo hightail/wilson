@@ -4,6 +4,5 @@ angular.module('myApp', ['wilson']).
   run(['$rootScope', '$location',
     function($rootScope, $location) {
       console.log('app.run()');
-      //wilson.log();
     }
   ]);

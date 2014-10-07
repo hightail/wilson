@@ -29,6 +29,7 @@
       "services": "/client/src/services",
       "behaviors": "/client/src/behaviors",
       "parsers": "/client/src/services/parsers",
+      "resources": "/client/src/services/resources",
       "utilities": "/client/src/services/utilities",
       "filters": "/client/src/filters",
       "guides":  "/client/src/guides",
