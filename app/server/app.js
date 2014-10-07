@@ -19,7 +19,7 @@ var wilsonConfigJson = require('./config/wilson-config.json');
 var wilson = Wilson(app, wilsonConfigJson);
 
 //attach the wilson routes under '/wilson'
-app.use('/wilson', wilson.router);
+app.use(wilson.config.client.app.mountpath, wilson.router);
 
 //Load index page
 var indexHbsPath = path.join(wilson.config.server.projectPaths.root, '/server/templates/index.hbs');
@@ -34,6 +34,10 @@ app.get('*', wilson.middleware, function(req, res) {
   var result = indexTemplate(res.locals);
 
   res.send(result);
+});
+
+app.get('*', wilson.middleware, function(req, res) {
+  res.render('index');
 });
 
 // Start the server
