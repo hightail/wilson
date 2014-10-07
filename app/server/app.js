@@ -36,10 +36,6 @@ app.get('*', wilson.middleware, function(req, res) {
   res.send(result);
 });
 
-app.get('*', wilson.middleware, function(req, res) {
-  res.render('index');
-});
-
 // Start the server
 http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on http port ' + app.get('port'));

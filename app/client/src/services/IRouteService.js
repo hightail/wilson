@@ -16,7 +16,7 @@ angular.wilson.service('IRouteService',
   ['$window', '$location', 'localStorageService', function($window, $location, localStorageService) {
     //var translate = i18nextService.getTranslateForNamespace('route-titles');
 
-    var handleRouteChange = function(currentRoute, routeOptions) {
+    var handleRouteChange = function(currentRoute, routeOptions, routeInfo) {
 
       return true;
     };
