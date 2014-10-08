@@ -24,7 +24,10 @@
     },
     "dependencies": {
       "ignored": [],
-      "core": []
+      "core": [
+        "AppService",
+        "DummyService"
+      ]
     },
     "tags": {
       "brand":       10,

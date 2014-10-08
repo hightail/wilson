@@ -26,8 +26,8 @@
     "projectPaths": {
       "root": "app",
       "components": "/client/src/components",
-      "services": "/client/src/services",
       "behaviors": "/client/src/behaviors",
+      "services": "/client/src/services",
       "parsers": "/client/src/services/parsers",
       "resources": "/client/src/services/resources",
       "utilities": "/client/src/services/utilities",
@@ -49,7 +49,16 @@
         "ParserFactoryService",
         "ResourceLoaderService",
         "StateMachineService"
-      ]
+      ],
+      "selectors": {
+        "components": ["ht-"],
+        "behaviors": ["ht-"],
+        "services": ["Service", "Factory"],
+        "parsers": ["Parser"],
+        "resources": ["Resource"],
+        "utilities": ["Utility"],
+        "guides": ["guide-"]
+      }
     },
     "tags": {
       "language":     6,
