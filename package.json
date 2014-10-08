@@ -1,6 +1,6 @@
 {
   "name": "wilson",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "An application framework based on Nodejs and Angularjs designed to bring together all of the ingredients needed to create structured, dynamic, large-scale web apps.",
   "main": "lib/wilson.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "awesome"
   ],
   "author": "Justin Fiedler, Hunter Novak, Dan Nguyen",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/hightail/wilson/issues"
   },

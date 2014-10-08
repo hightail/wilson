@@ -15,7 +15,8 @@ newrelic_agent.log
 node_modules
 bower_components
 
-client.wilson.js
-client.wilson.min.js
+
+#client.wilson.js
+#client.wilson.min.js
 
 **/server/.cache
