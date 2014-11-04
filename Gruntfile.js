@@ -3,6 +3,19 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    clean: {
+      dist: {
+        files: [
+          {
+            dot: true,
+            src: [
+              'lib/client/client.wilson.js',
+              'lib/client/client.wilson.min.js'
+            ]
+          }
+        ]
+      }
+    },
     concat: {
       options: {
         separator: ';'
@@ -29,6 +42,7 @@ module.exports = function(grunt) {
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('wilson-build', ['concat', 'uglify']);
 
