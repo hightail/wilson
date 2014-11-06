@@ -36,7 +36,8 @@
       "tagMiddleware": "/server/tag-middleware",
       "routes": "/client/routing.json",
       "IRouteService": "/client/src/services/IRouteService.js",
-      "locales": "/client/locales"
+      "locales": "/client/locales",
+      "sass": "/client/appearance/base/common/styles"
     },
     "dependencies": {
       "ignored": ["localStorageService"],
