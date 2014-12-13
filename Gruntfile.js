@@ -30,7 +30,16 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+        compress: {
+          'pure_funcs': [
+            'console.log',
+            'console.dir',
+            'console.warn',
+            'console.error',
+            'console.info'
+          ]
+        }
       },
       build: {
         src: 'lib/client/client.wilson.js',

@@ -24,7 +24,8 @@
       "path": "."
     },
     "projectPaths": {
-      "root": "app",
+      "root": ".",
+      "clientApp": "/client/app.js",
       "components": "/client/src/components",
       "behaviors": "/client/src/behaviors",
       "services": "/client/src/services",
@@ -49,7 +50,10 @@
         "i18nextService",
         "ParserFactoryService",
         "ResourceLoaderService",
-        "StateMachineService"
+        "StateMachineService",
+        "ElementHelperService",
+        "ComponentPrerenderService",
+        "DeprecatedFunctionService"
       ],
       "selectors": {
         "components": ["ht-"],
