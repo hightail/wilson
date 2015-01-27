@@ -82,6 +82,9 @@
         "components": 1000,
         "bundles":    1000
       }
+    },
+    "prerender": {
+      "prerenderServiceUrl": false
     }
   }
 }
