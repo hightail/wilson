@@ -15,7 +15,10 @@
       "useLocalStorage": false,
       "localStorageExpirationTime": 604800000
     },
-    "cdn": false
+    "cdn": false,
+    "prerender": {
+      "enableLogs": false
+    }
   },
   "server" : {
     "deploy": {
@@ -82,9 +85,6 @@
         "components": 1000,
         "bundles":    1000
       }
-    },
-    "prerender": {
-      "prerenderServiceUrl": false
     }
   }
 }
