@@ -60,10 +60,6 @@
       "selectors": {
         "components": ["ht-"],
         "behaviors": ["ht-"],
-        "services": ["Service", "Factory"],
-        "parsers": ["Parser"],
-        "resources": ["Resource"],
-        "utilities": ["Utility"],
         "guides": ["guide-"]
       }
     },
