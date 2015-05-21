@@ -78,7 +78,8 @@
         "assets":     1000,
         "appShell":   1000,
         "components": 1000,
-        "bundles":    1000
+        "bundles":    1000,
+        "wilson":     1000
       }
     }
   }
