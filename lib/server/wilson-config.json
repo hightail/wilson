@@ -73,6 +73,7 @@
     },
     "caching": {
       "useServerCache": false,
+      "readChangeList": false,
       "folder": "server/.cache",
       "maxAge": {
         "assets":     1000,
