@@ -58,9 +58,9 @@
         "DeprecatedFunctionService"
       ],
       "selectors": {
-        "components": ["ht-"],
-        "behaviors": ["ht-"],
-        "guides": ["guide-"]
+        "component": "ht",
+        "behavior": "ht",
+        "guide": "guide"
       }
     },
     "tags": {
