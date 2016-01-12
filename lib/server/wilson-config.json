@@ -82,6 +82,7 @@
         "bundles":    1000,
         "wilson":     1000
       }
-    }
+    },
+    "debugHeaderCode": "true"
   }
 }
