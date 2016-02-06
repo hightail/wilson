@@ -3,7 +3,8 @@
     "app": {
       "version" : "0.0.0",
       "updateInterval": "1 hours",
-      "mountpath": "/wilson"
+      "mountpath": "/wilson",
+      "autoLocalizeRoutes": true
     },
     "i18n": {
       "lng": "en",
@@ -13,7 +14,8 @@
       "namespaces": [],
       "sendMissing": true,
       "useLocalStorage": false,
-      "localStorageExpirationTime": 604800000
+      "localStorageExpirationTime": 604800000,
+      "clientSafeNamespaces": "all"
     },
     "cdn": false,
     "prerender": {
