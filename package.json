@@ -1,6 +1,6 @@
 {
   "name": "wilson",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "An application framework based on Nodejs and Angularjs designed to bring together all of the ingredients needed to create structured, dynamic, large-scale web apps.",
   "main": "lib/server/wilson.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "hbs": "4.0.0",
     "i18next-node-stable": "1.7.11",
     "sprintf-js": "1.0.3",
-    "lodash": "4.6.1",
+    "lodash": "4.15.0",
     "lz-string": "1.4.4",
     "prerender-node": "2.2.0",
     "q": "1.4.1",
