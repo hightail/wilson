@@ -2,7 +2,7 @@
   "client": {
     "app": {
       "version" : "0.0.0",
-      "updateInterval": "1 hours",
+      "updateIntervalMillis": 3600000,
       "mountpath": "/wilson",
       "autoLocalizeRoutes": true
     },
