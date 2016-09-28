@@ -19,6 +19,7 @@
     },
     "cdn": false,
     "prerender": {
+      "enabled":    false,
       "enableLogs": false
     }
   },
