@@ -4,7 +4,8 @@
 var gulp    = require('gulp'),
     concat  = require('gulp-concat'),
     rename  = require('gulp-rename'),
-    uglify  = require('gulp-uglify');
+    uglify  = require('gulp-uglify'),
+    pkg     = require('./package.json');
 
 
 gulp.task('build', function() {
@@ -13,7 +14,7 @@ gulp.task('build', function() {
     .pipe(gulp.dest('lib/client'))
     .pipe(uglify({
       output: {
-        'preamble':   '/* Wilson Client Framework ' + (new Date().toUTCString()) + ' */\n'
+        'preamble': '/*** Wilson Client Framework  v' + pkg.version + ' -- ' + (new Date().toUTCString()) + ' ***/\n'
       }
     }))
     .pipe(rename('client.wilson.min.js'))
