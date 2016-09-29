@@ -54,7 +54,7 @@ angular.module('wilson.config', []).config(function () {
       "language": "en",
       "platform": "desktop"
     },
-    "routes": []
+    "routes": [{ path: null, title: "test", component: "dummy", options: {} }]
   });
 
 });
