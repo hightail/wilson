@@ -84,7 +84,7 @@ describe('Core', function() {
     });
 
 
-    runTest('Wilson-1000-02', 'Should not provide access to the Wilson function from the window.', function() {
+    runTest('Wilson-1000-02', 'Should not provide access to the Wilson constructor function externally on the window.', function() {
 
       expect(window.Wilson).toBeUndefined();
       expect(window.angular.Wilson).toBeUndefined();
