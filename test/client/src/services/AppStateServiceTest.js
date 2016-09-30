@@ -19,6 +19,14 @@ describe('Services', function() {
     }));
 
 
+    //   _____         _     ____        _ _
+    //  |_   _|__  ___| |_  / ___| _   _(_) |_ ___
+    //    | |/ _ \/ __| __| \___ \| | | | | __/ _ \
+    //    | |  __/\__ \ |_   ___) | |_| | | ||  __/
+    //    |_|\___||___/\__| |____/ \__,_|_|\__\___|
+    //
+    // region test suite
+
     runTest('AppStateService-1000-01', 'Should have proper service interface.', function() {
 
       expect(AppStateService.getPersistentValue).toBeDefined();
@@ -67,6 +75,8 @@ describe('Services', function() {
       });
 
     });
+
+    // endregion
 
   });
 

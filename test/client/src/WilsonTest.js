@@ -451,6 +451,84 @@ describe('Core', function() {
 
     });
 
+
+    runTest('Wilson-1000-12', 'Should properly validate behavior definitions.', function() {
+      var invalidDefinitions = [[], 'Hello World', {}, null, undefined];
+
+      // Should throw error on non array or function definition
+      _.each(invalidDefinitions, function(def) {
+        try {
+          wilson.behavior('wls-test-xii-test-something', def);
+          fail('Validation failed to identify bad behavior definition.');
+        } catch(e) {}
+      });
+
+
+      // Should fail on function input if adding after module config
+      try {
+        wilson.behavior('wls-test-xii-do-something', ['$rootScope', function($rootScope) {
+          return {
+            restrict: 'A',
+            link: function($scope, $element, $attrs, controller) {}
+          }
+        }]);
+      } catch(e) {
+        fail('Validation failed for a good "Array" behavior definitions');
+      }
+
+      try {
+        wilson.filter('wls-test-xii-do-something-again', function() {
+          return {
+            restrict: 'A',
+            link: function($scope, $element, $attrs, controller) {}
+          }
+        });
+      } catch(e) {
+        fail('Validation failed for a good "function" behavior definitions');
+      }
+
+    });
+
+
+    runTest('Wilson-1000-13', 'Should properly create behavior directives on angular.', function(done) {
+
+      // Create a test behavior directive
+      wilson.behavior('wls-test-xiii-do-something', ['$rootScope', function($rootScope) {
+        return {
+          restrict: 'A',
+          link: function($scope, $element, $attrs, controller) {
+            $scope.doSomethingBehaviorLinked = true;
+            $element.addClass('test-success');
+          }
+        }
+      }]);
+
+
+      setTimeout(function() {
+
+        var testScope = rootScope.$new(true);
+        var element   = compile('<div ht-wls-test-xiii-do-something></div>')(testScope);
+
+        setTimeout(function() {
+
+          // Ensure that our element has the success class
+          expect(element.hasClass('test-success')).toBe(true);
+
+          // Ensure our behavior directive's link function has been called
+          expect(testScope.doSomethingBehaviorLinked).toBeDefined();
+          expect(testScope.doSomethingBehaviorLinked).toBe(true);
+
+          done();
+        }, 10);
+
+        rootScope.$apply();
+
+      }, 10);
+
+      rootScope.$apply();
+
+    });
+
     // endregion
 
   });
