@@ -23,7 +23,7 @@ describe('Services', function() {
       ComponentFactoryService = $injector.get('ComponentFactoryService');
       rootScope               = $injector.get('$rootScope');
 
-      scope                   = rootScope.$new();
+      scope                   = rootScope.$new(true);
       element                 = angular.element('<div></div>');
       attrs                   = {};
       controller              = {};
@@ -45,7 +45,7 @@ describe('Services', function() {
     });
 
 
-    runTest('ComponentFactoryService-1000-03', 'Should decorate a null parentComponent if a parent wilson component does not exists.', function() {
+    runTest('ComponentFactoryService-1000-03', 'Should set parentComponent to null if no component parent exists.', function() {
 
       // Initialize component
       ComponentFactoryService.init('test-component', scope, element, attrs, controller);
@@ -55,7 +55,24 @@ describe('Services', function() {
     });
 
 
-    runTest('ComponentFactoryService-1000-04', 'Should decorate proper controller methods.', function() {
+    runTest('ComponentFactoryService-1000-04', 'Should decorate the parentComponent scope if a parent wilson component exists.', function() {
+
+      // Create a fake parent scope
+      var parentScope = rootScope.$new(true);
+      parentScope.componentCName = 'my-parent';
+
+      // Initialize component with a new isolate scope of our fake parent
+      var componentScope = parentScope.$new(true);
+      ComponentFactoryService.init('test-component', componentScope, element, attrs, controller);
+
+      expect(componentScope.parentComponent).toBeDefined();
+      expect(componentScope.parentComponent).toBe(parentScope);
+      expect(componentScope.parentComponent.componentCName).toBe('my-parent');
+
+    });
+
+
+    runTest('ComponentFactoryService-1000-05', 'Should decorate proper controller methods.', function() {
 
       // Initialize component
       ComponentFactoryService.init('test-component', scope, element, attrs, controller);
@@ -108,7 +125,7 @@ describe('Services', function() {
     });
 
 
-    runTest('ComponentFactoryService-1000-05', 'Should decorate proper scope methods.', function() {
+    runTest('ComponentFactoryService-1000-06', 'Should decorate proper scope methods.', function() {
 
       // Initialize component
       ComponentFactoryService.init('test-component', scope, element, attrs, controller);
@@ -152,7 +169,7 @@ describe('Services', function() {
     });
 
 
-    runTest('ComponentFactoryService-1000-06', 'Should initialize with proper current state.', function() {
+    runTest('ComponentFactoryService-1000-07', 'Should initialize with proper current state.', function() {
 
       // Initialize component
       ComponentFactoryService.init('test-component', scope, element, attrs, controller);
@@ -166,22 +183,37 @@ describe('Services', function() {
     });
 
 
-    runTest('ComponentFactoryService-1000-07', 'Should not expose scope on parent by default.', function() {
+    runTest('ComponentFactoryService-1000-08', 'Should not expose scope on parent by default.', function() {
+
+      // Create a fake parent scope
+      var parentScope = rootScope.$new(true);
+      parentScope.componentCName = 'my-parent';
 
       // Initialize component
-      ComponentFactoryService.init('test-component', scope, element, attrs, controller);
+      var componentScope = parentScope.$new(true);
+      ComponentFactoryService.init('test-component', componentScope, element, attrs, controller);
 
-      expect(rootScope.testComponent).not.toBeDefined();
+      _.each(parentScope, function(val, key) {
+        if (!_.startsWith(key, '$')) {
+          expect(val).not.toBe(componentScope);
+        }
+      });
 
     });
 
 
-    runTest('ComponentFactoryService-1000-08', 'Should expose scope on parent if attribute specified.', function() {
+    runTest('ComponentFactoryService-1000-09', 'Should expose scope on parent if attribute specified.', function() {
+
+      // Create a fake parent scope
+      var parentScope = rootScope.$new(true);
+      parentScope.componentCName = 'my-parent';
 
       // Initialize component
-      ComponentFactoryService.init('test-component', scope, element, { expose: 'testComponent' }, controller);
+      var componentScope = parentScope.$new(true);
+      ComponentFactoryService.init('test-component', componentScope, element, { expose: 'testComponent' }, controller);
 
-      // TODO ... Create a component that has a true component parent in the scopeChain
+      expect(parentScope.testComponent).toBeDefined();
+      expect(parentScope.testComponent).toBe(componentScope);
 
     });
 

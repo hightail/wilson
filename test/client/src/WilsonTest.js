@@ -248,9 +248,9 @@ describe('Core', function() {
     runTest('Wilson-1000-08', 'Should properly create component element directive on angular.', function(done) {
 
       // Create test component
-      createTestComponent('test-component-viii', '<div class="ht-test-component-viii"><h1>[[data.test]]</h1></div>');
+      createTestComponent('wls-viii-test-component', '<div class="ht-wls-viii-test-component"><h1>[[data.test]]</h1></div>');
 
-      var element = compile('<ht-test-component-viii></ht-test-component-viii>')(rootScope.$new(true));
+      var element = compile('<ht-wls-viii-test-component></ht-wls-viii-test-component>')(rootScope.$new(true));
 
       setTimeout(function() {
 
@@ -258,13 +258,47 @@ describe('Core', function() {
 
         // Ensure that this is indeed our test-component
         expect(componentScope).toBeDefined();
-        expect(componentScope.componentCName).toBe('test-component-viii');
+        expect(componentScope.componentCName).toBe('wls-viii-test-component');
 
         expect(componentScope.data).toBeDefined();
         expect(typeof componentScope.data).toBe('object');
         expect(componentScope.data.test).toBe('SUCCESS');
 
         // Verify all necessary scope decorations
+        expect(componentScope.parentComponent).toBeNull();
+
+        expect(componentScope.stateMachine).toBeDefined();
+        expect(typeof componentScope.stateMachine).toBe('object');
+
+
+        expect(componentScope.translate).toBeDefined();
+        expect(typeof componentScope.translate).toBe('function');
+
+        expect(componentScope.overrideText).toBeDefined();
+        expect(typeof componentScope.overrideText).toBe('function');
+
+        expect(componentScope.defaultValue).toBeDefined();
+        expect(typeof componentScope.defaultValue).toBe('function');
+
+        expect(componentScope.triggerDigest).toBeDefined();
+        expect(typeof componentScope.triggerDigest).toBe('function');
+
+        expect(componentScope.bindToDigest).toBeDefined();
+        expect(typeof componentScope.bindToDigest).toBe('function');
+
+
+        // Test for appropriate prerender decorations
+        expect(componentScope.registerDataDependency).toBeDefined();
+        expect(typeof componentScope.registerDataDependency).toBe('function');
+
+        expect(componentScope.checkViewDependencies).toBeDefined();
+        expect(typeof componentScope.checkViewDependencies).toBe('function');
+
+        expect(componentScope.resolveViewDependency).toBeDefined();
+        expect(typeof componentScope.resolveViewDependency).toBe('function');
+
+        expect(componentScope.deferredResolveViewDependency).toBeDefined();
+        expect(typeof componentScope.deferredResolveViewDependency).toBe('function');
 
         done();
       }, 10);
@@ -274,8 +308,152 @@ describe('Core', function() {
     });
 
 
+    runTest('Wilson-1000-09', 'Should properly support nested components.', function(done) {
+
+      // Create parent component
+      createTestComponent('wls-ix-test-outer-parent',
+        '<div class="ht-wls-ix-test-outer-parent">' +
+          '<h1>I am the parent</h1>' +
+          '<ht-wls-ix-test-inner-child expose="innerChild"></ht-wls-ix-test-inner-child>' +
+        '</div>'
+      );
+
+      // Create child component
+      createTestComponent('wls-ix-test-inner-child',
+        '<div class="ht-wls-ix-test-inner-child">' +
+          '<h1>I am the child</h1>' +
+        '</div>'
+      );
+
+
+      var element = compile('<ht-wls-ix-test-outer-parent></ht-wls-ix-test-outer-parent>')(rootScope.$new(true));
+
+      setTimeout(function() {
+
+        var componentScope = element.find(':first-child').scope();
+
+        // Ensure that this is indeed our outer parent scope
+        expect(componentScope).toBeDefined();
+        expect(componentScope.componentCName).toBe('wls-ix-test-outer-parent');
+
+        // Ensure that the inner component has compiled and is present
+        var childElem = element.find('.ht-wls-ix-test-inner-child');
+        expect(childElem.length).toBeGreaterThan(0);
+
+        // Ensure that the child has the proper inner scope
+        var childScope = childElem.find(':first-child').scope();
+        expect(childScope).toBeDefined();
+        expect(childScope.componentCName).toBe('wls-ix-test-inner-child');
+
+        // Ensure that the parent is decorated appropriately
+        expect(childScope.parentComponent).toBeDefined();
+        expect(childScope.parentComponent).toBe(componentScope);
+        expect(childScope.parentComponent.componentCName).toBe('wls-ix-test-outer-parent');
+
+        // Now ensure that our scope has been properly exposed onto the parent
+        expect(componentScope.innerChild).toBeDefined();
+        expect(componentScope.innerChild).toBe(childScope);
+        expect(componentScope.innerChild.componentCName).toBe('wls-ix-test-inner-child');
+
+        done();
+      }, 10);
+
+
+      rootScope.$apply();
+
+    });
+
+
+    runTest('Wilson-1000-10', 'Should properly validate filter definitions.', function(done) {
+      var invalidDefinitions = [[], 'Hello World', {}, null, undefined];
+
+      // Should throw error on non array or function definition
+      _.each(invalidDefinitions, function(def) {
+        try {
+          wilson.filter('testMe', def);
+          fail('Validation failed to identify bad filter definition.');
+        } catch(e) {}
+      });
+
+
+      // Should fail on function input if adding after module config
+      try {
+        wilson.filter('makeOne', ['$rootScope', function($rootScope) {
+          return function(value) { return 1; }
+        }]);
+      } catch(e) {
+        fail('Validation failed for a good "Array" filter definitions');
+      }
+
+      try {
+        wilson.filter('makeTwo', function(value) { return 2; });
+      } catch(e) {
+        fail('Validation failed for a good "function" filter definitions');
+      }
+
+
+      setTimeout(function() {
+
+        // Now lets expect that we can get this filter out of angular
+        var makeOne = injector.get('makeOneFilter');
+        expect(makeOne).toBeDefined();
+        expect(typeof makeOne).toBe('function');
+        expect(makeOne.length).toBe(1);   // expect 1 argument
+
+        // Now lets call the function and make sure it works
+        var original  = 'random string';
+        var result    = makeOne(original);
+        expect(result).toBe(1);
+
+        var makeTwo = injector.get('makeTwoFilter');
+        expect(makeTwo).toBeDefined();
+        expect(typeof makeTwo).toBe('function');
+        expect(makeTwo.length).toBe(1);   // expect 1 argument
+
+        result    = makeTwo(original);
+        expect(result).toBe(2);
+
+        done();
+      }, 10);
+
+      rootScope.$apply();
+
+    });
+
+
+    runTest('Wilson-1000-11', 'Should properly create filters on angular.', function(done) {
+
+      // Declare a filter on wilson
+      wilson.filter('wordReplace', function(value, target, replacement) {
+        return value.replace(new RegExp(target, 'ig'), replacement);
+      });
+
+
+      setTimeout(function() {
+
+        // Now lets expect that we can get this filter out of angular
+        var wordReplace = injector.get('wordReplaceFilter');
+        expect(wordReplace).toBeDefined();
+        expect(typeof wordReplace).toBe('function');
+        expect(wordReplace.length).toBe(3);   // expect 3 arguments
+
+        // Now lets call the function and make sure it works
+        var original  = 'Save the kittens. Find all of the kittens and save the kittens as fast as you can.';
+        var result    = wordReplace(original, 'kittens', 'dolla bills');
+        var replaced  = 'Save the dolla bills. Find all of the dolla bills and save the dolla bills as fast as you can.';
+
+        expect(result).toBe(replaced);
+
+        done();
+      }, 10);
+
+      rootScope.$apply();
+
+    });
+
     // endregion
 
   });
+
 
 });
