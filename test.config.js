@@ -44,8 +44,9 @@ module.exports = function(config) {
       'test/client/test-runner.js',
 
       // Test Suite Files
-      'test/client/services/**/*.js',
-      'test/client/utils/**/*.js',
+      'test/client/src/wilsonTest.js',
+      'test/client/src/services/**/*.js',
+      'test/client/src/utils/**/*.js',
     ],
 
 

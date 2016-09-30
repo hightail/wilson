@@ -10,4 +10,12 @@
  */
 'use strict';
 
+// Append our app module to the html
+$('html').attr('ng-app', 'testWilson');
+
+// Add base href to document
+document.head.appendChild($('<base href="/">')[0]);
+
+// Declare the test app module
 angular.module('testWilson', ['wilson']);
+

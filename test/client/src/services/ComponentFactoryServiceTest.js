@@ -45,13 +45,12 @@ describe('Services', function() {
     });
 
 
-    runTest('ComponentFactoryService-1000-03', 'Should decorate proper parentComponent scope onto the scope.', function() {
+    runTest('ComponentFactoryService-1000-03', 'Should decorate a null parentComponent if a parent wilson component does not exists.', function() {
 
       // Initialize component
       ComponentFactoryService.init('test-component', scope, element, attrs, controller);
 
-      expect(scope.parentComponent).toBeDefined();
-      expect(scope.parentComponent).toBe(rootScope);
+      expect(scope.parentComponent).toBeNull();
 
     });
 
@@ -116,7 +115,7 @@ describe('Services', function() {
 
       // Test for appropriate decorations
       expect(scope.componentCName).toBe('test-component');
-      expect(scope.parentComponent).toBe(rootScope);
+      expect(scope.parentComponent).toBeNull();
 
       expect(scope.stateMachine).toBeDefined();
       expect(typeof scope.stateMachine).toBe('object');
@@ -182,8 +181,7 @@ describe('Services', function() {
       // Initialize component
       ComponentFactoryService.init('test-component', scope, element, { expose: 'testComponent' }, controller);
 
-      expect(rootScope.testComponent).toBeDefined();
-      expect(rootScope.testComponent).toBe(scope);
+      // TODO ... Create a component that has a true component parent in the scopeChain
 
     });
 
