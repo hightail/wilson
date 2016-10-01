@@ -4,6 +4,8 @@
   "description": "An application framework based on Nodejs and Angularjs designed to bring together all of the ingredients needed to create structured, dynamic, large-scale web apps.",
   "main": "lib/server/wilson.js",
   "scripts": {
+    "postinstall": "npm run install-bower",
+    "install-bower": "bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/hightail/wilson/issues"
   },
-  "homepage": "https://github.com/hightail/wilson",
+  "homepage": "http://wilsonjs.org",
   "dependencies": {
     "async": "1.5.2",
     "dependable": "0.2.5",
@@ -44,9 +46,15 @@
     "xpath": "0.0.22"
   },
   "devDependencies": {
-    "grunt": "0.4.5",
-    "grunt-contrib-clean": "1.0.0",
-    "grunt-contrib-concat": "1.0.0",
-    "grunt-contrib-uglify": "0.11.1"
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.0",
+    "gulp-rename": "1.2.2",
+    "gulp-uglify": "2.0.0",
+    "jasmine-core": "2.4.1",
+    "jasmine-jquery": "2.1.1",
+    "karma": "0.13.22",
+    "karma-jasmine": "0.3.8",
+    "karma-phantomjs-launcher": "1.0.0",
+    "karma-spec-reporter": "0.0.25"
   }
 }

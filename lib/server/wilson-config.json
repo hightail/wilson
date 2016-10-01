@@ -2,7 +2,7 @@
   "client": {
     "app": {
       "version" : "0.0.0",
-      "updateInterval": "1 hours",
+      "updateIntervalMillis": 3600000,
       "mountpath": "/wilson",
       "autoLocalizeRoutes": true
     },
@@ -19,6 +19,7 @@
     },
     "cdn": false,
     "prerender": {
+      "enabled":    false,
       "enableLogs": false
     }
   },
@@ -48,14 +49,11 @@
       "ignored": ["localStorageService"],
       "core": [
         "AppStateService",
-        "BusFactoryService",
         "ComponentFactoryService",
         "ComponentLoaderService",
         "i18nextService",
-        "ParserFactoryService",
         "ResourceLoaderService",
         "StateMachineService",
-        "ElementHelperService",
         "ComponentPrerenderService",
         "DeprecatedFunctionService"
       ],
