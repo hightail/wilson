@@ -61,3 +61,6 @@ interface Wilson {
   resource(name: string, definition: any[]|Function): void;
 
 }
+
+
+declare var wilson: Wilson;
