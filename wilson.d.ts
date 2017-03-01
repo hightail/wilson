@@ -51,6 +51,7 @@ interface Wilson {
 
   // Public Methods
   setAppConfig(config: Object): void;
+  getActivePage(): boolean;
   filter(name: string, definition: any[]|Function): void;
   component(name: string, config: Object): void;
   behavior(name: string, definition: any[]|Function): void;
