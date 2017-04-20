@@ -21,7 +21,8 @@
     "prerender": {
       "enabled":    false,
       "enableLogs": false
-    }
+    },
+    "debugInfoEnabled": false
   },
   "server" : {
     "deploy": {
