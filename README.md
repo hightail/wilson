@@ -1,6 +1,6 @@
-#wilson
+# wilson
 
-##Example node server/app.js
+## Example node server/app.js
 ```js
 var express = require('express'),
     Wilson = require('wilson'),
@@ -81,7 +81,7 @@ http.createServer(app).listen(app.get('port'), function() {
 </html>
 ```
 
-##Example angular client/app.js
+## Example angular client/app.js
 ```js
 angular.module('myApp', ['wilson']).
   config(['MyService', function('WilsonService') {
