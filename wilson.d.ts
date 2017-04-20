@@ -14,15 +14,15 @@ interface WilsonPathUtils {
 interface WilsonUtils {
 
   // Array Utilities
-  spliceArray(targetArray: any[], start?: number, replace?: number, arrayOfReplacements?: any[]): any[];
-  replaceArray(destinationArray: any[], sourceArray: any[]): void;
+  spliceArray(targetArray: any[], startIdx?: number, endIdx?: number, replacements?: any[]): any[];
+  replaceArray(destination: any[], source: any[]): void;
   clearArray(targetArray: any[]): void;
   
   // Object Utilities
-  clearObject(object: Object): void;
-  replaceObject(destinationObject: Object, sourceObject: Object): void;
-  getPropFromPath(object: Object, path: string): any;
-  setPropFromPath(object: Object, path: string, value: any): void;
+  clearObject(targetObj: Object): void;
+  replaceObject(destination: Object, source: Object): void;
+  getPropFromPath(obj: Object, path: string): any;
+  setPropFromPath(obj: Object, path: string, value: any): void;
 
   // Data Utilities
   bytesToReadable(bytes: number, decimalPoint?: number): string;
@@ -43,6 +43,20 @@ interface WilsonUtils {
 }
 
 
+interface WilsonLogger {
+
+  setLevel(logLevel: string): void;
+
+  // Logging Methods
+  trace(message: string): void;
+  debug(message: string): void;
+  info(message: string): void;
+  warn(message: string): void;
+  error(message: string): void;
+  fatal(message: string): void;
+}
+
+
 interface Wilson {
 
   // Properties
@@ -52,6 +66,8 @@ interface Wilson {
   // Public Methods
   setAppConfig(config: Object): void;
   getActivePage(): boolean;
+  getActiveComponent(componentId: string): Object;
+  getActiveComponentList(): Object[];
   filter(name: string, definition: any[]|Function): void;
   component(name: string, config: Object): void;
   behavior(name: string, definition: any[]|Function): void;

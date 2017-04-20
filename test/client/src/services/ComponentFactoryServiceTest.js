@@ -116,20 +116,6 @@ describe('Services', function() {
 
       expect(controller.auto.afterDigest).toBeDefined();
       expect(typeof controller.auto.afterDigest).toBe('function');
-
-
-      // Test for appropriate prerender decorations
-      expect(controller.registerDataDependency).toBeDefined();
-      expect(typeof controller.registerDataDependency).toBe('function');
-
-      expect(controller.checkViewDependencies).toBeDefined();
-      expect(typeof controller.checkViewDependencies).toBe('function');
-
-      expect(controller.resolveViewDependency).toBeDefined();
-      expect(typeof controller.resolveViewDependency).toBe('function');
-
-      expect(controller.deferredResolveViewDependency).toBeDefined();
-      expect(typeof controller.deferredResolveViewDependency).toBe('function');
     });
 
 
@@ -161,19 +147,6 @@ describe('Services', function() {
       expect(scope.bindToDigest).toBeDefined();
       expect(typeof scope.bindToDigest).toBe('function');
 
-
-      // Test for appropriate prerender decorations
-      expect(scope.registerDataDependency).toBeDefined();
-      expect(typeof scope.registerDataDependency).toBe('function');
-
-      expect(scope.checkViewDependencies).toBeDefined();
-      expect(typeof scope.checkViewDependencies).toBe('function');
-
-      expect(scope.resolveViewDependency).toBeDefined();
-      expect(typeof scope.resolveViewDependency).toBe('function');
-
-      expect(scope.deferredResolveViewDependency).toBeDefined();
-      expect(typeof scope.deferredResolveViewDependency).toBe('function');
     });
 
 

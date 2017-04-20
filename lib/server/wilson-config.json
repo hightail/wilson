@@ -21,7 +21,8 @@
     "prerender": {
       "enabled":    false,
       "enableLogs": false
-    }
+    },
+    "debugInfoEnabled": false
   },
   "server" : {
     "deploy": {
@@ -82,7 +83,6 @@
         "bundles":    1000,
         "wilson":     1000
       }
-    },
-    "debugHeaderCode": "true"
+    }
   }
 }
