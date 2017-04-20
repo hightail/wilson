@@ -1,7 +1,7 @@
 #wilson
 
 ##Example node server/app.js
-```
+```js
 var express = require('express'),
     Wilson = require('wilson'),
     path = require('path'),
@@ -46,7 +46,7 @@ http.createServer(app).listen(app.get('port'), function() {
 ```
 
 ##Example template/index.hbs
-```
+```html
 <html id="ng-app" ng-app="myApp">
   <head>
     <script type="stylesheet" src="/client/appearence/{{wilsonConfig.tags.brand}}/my.css"></script>
@@ -82,7 +82,7 @@ http.createServer(app).listen(app.get('port'), function() {
 ```
 
 ##Example angular client/app.js
-```
+```js
 angular.module('myApp', ['wilson']).
   config(['MyService', function('WilsonService') {
     //This is loaded for me
