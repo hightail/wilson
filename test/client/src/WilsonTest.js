@@ -286,20 +286,6 @@ describe('Core', function() {
         expect(componentScope.bindToDigest).toBeDefined();
         expect(typeof componentScope.bindToDigest).toBe('function');
 
-
-        // Test for appropriate prerender decorations
-        expect(componentScope.registerDataDependency).toBeDefined();
-        expect(typeof componentScope.registerDataDependency).toBe('function');
-
-        expect(componentScope.checkViewDependencies).toBeDefined();
-        expect(typeof componentScope.checkViewDependencies).toBe('function');
-
-        expect(componentScope.resolveViewDependency).toBeDefined();
-        expect(typeof componentScope.resolveViewDependency).toBe('function');
-
-        expect(componentScope.deferredResolveViewDependency).toBeDefined();
-        expect(typeof componentScope.deferredResolveViewDependency).toBe('function');
-
         done();
       }, 10);
 

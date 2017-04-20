@@ -16,16 +16,16 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // Plugins and Libraries
-      'bower_components/jquery/dist/jquery.js',
-      'bower_components/lodash/dist/lodash.js',
-      'bower_components/angular/angular.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-local-storage/dist/angular-local-storage.js',
-      'bower_components/javascript-state-machine/state-machine.js',
-      'bower_components/i18next/i18next.min.js',
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/lodash/lodash.js',
+      'node_modules/angular/angular.js',
+      'node_modules/angular-route/angular-route.js',
+      'node_modules/angular-local-storage/dist/angular-local-storage.js',
+      'node_modules/javascript-state-machine/state-machine.js',
+      'node_modules/i18next/i18next.min.js',
 
       // Test Plugins
-      'bower_components/angular-mocks/angular-mocks.js',
+      'node_modules/angular-mocks/angular-mocks.js',
 
       // Wilson Test Config
       'test/client/wilson-config.js',
@@ -34,8 +34,8 @@ module.exports = function(config) {
       'lib/client/src/wilson.js',
 
       // All Wilson Source Files
+      'lib/client/src/modules/*.js',
       'lib/client/src/services/*.js',
-      'lib/client/src/utils/*.js',
 
       // Test Wilson App
       'test/client/app.js',
@@ -46,7 +46,7 @@ module.exports = function(config) {
       // Test Suite Files
       'test/client/src/wilsonTest.js',
       'test/client/src/services/**/*.js',
-      'test/client/src/utils/**/*.js',
+      'test/client/src/utils/**/*.js'
     ],
 
 
