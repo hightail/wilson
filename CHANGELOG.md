@@ -1,5 +1,10 @@
 # Wilson CHANGELOG
 
+# v3.1.0
+- Removed printStackTrace method
+- Added **bool** utility as a shorthand alias to **parseBoolean**   
+- Renamed IRouteService **translateTitle** to **getTitleText**
+
 # v3.0.0
 - WilsonUtils service added to contain utilities
 - WilsonLogger service created to abstract logging for apps
