@@ -1,4 +1,4 @@
-// Type definitions for Wilson 2.0.x
+// Type definitions for Wilson 3.1.x
 // Project https://github.com/hightail/wilson
 // Definitions by: Hunter Novak <https://github.com/hunternovak>
 // Definitions: https://github.com/hightail/wilson/wilson.d.ts
@@ -28,11 +28,9 @@ interface WilsonUtils {
   bytesToReadable(bytes: number, decimalPoint?: number): string;
   generateUUID(): string;
 
-  // Error Utilities
-  printStackTrace(): void;
-
   // Type Utilities
   parseBoolean(value: any): boolean;
+  bool(value: any): boolean;
 
   // Url Utilities
   path: WilsonPathUtils;
@@ -61,6 +59,7 @@ interface Wilson {
 
   // Properties
   utils:  WilsonUtils;
+  log:    WilsonLogger;
   config: Object;
 
   // Public Methods
