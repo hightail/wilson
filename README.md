@@ -1,4 +1,11 @@
-# wilson
+# Wilson
+
+Wilson is a framework for building large-scale SPA's with angularjs. It provides features like component abstraction, code-splitting,
+dependency resolution, advanced routing, logging and more.
+
+[Full Wilson Documentation](https://github.com/hightail/wilson-api)
+
+# Basic Setup
 
 ## Example node server/app.js
 ```js
@@ -45,7 +52,7 @@ http.createServer(app).listen(app.get('port'), function() {
 });
 ```
 
-##Example template/index.hbs
+## Example template/index.hbs
 ```html
 <html id="ng-app" ng-app="myApp">
   <head>
