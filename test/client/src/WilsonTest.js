@@ -106,6 +106,18 @@ describe('Core', function() {
       expect(wilson.setAppConfig).toBeDefined();
       expect(typeof wilson.setAppConfig).toBe('function');
 
+      expect(wilson.getActivePage).toBeDefined();
+      expect(typeof wilson.getActivePage).toBe('function');
+
+      expect(wilson.getActiveComponent).toBeDefined();
+      expect(typeof wilson.getActiveComponent).toBe('function');
+
+      expect(wilson.getActiveComponentList).toBeDefined();
+      expect(typeof wilson.getActiveComponentList).toBe('function');
+
+      expect(wilson.getActiveRouteInfo).toBeDefined();
+      expect(typeof wilson.getActiveRouteInfo).toBe('function');
+
       expect(wilson.filter).toBeDefined();
       expect(typeof wilson.filter).toBe('function');
 
