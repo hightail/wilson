@@ -42,9 +42,9 @@
       "filters": "/client/src/filters",
       "guides":  "/client/src/guides",
       "tagMiddleware": "/server/tag-middleware",
+      "locales": "/client/locales",
       "routes": "/client/routing.json",
-      "IRouteService": "/client/src/services/IRouteService.js",
-      "locales": "/client/locales"
+      "routeService": "/client/router.js"
     },
     "dependencies": {
       "ignored": ["localStorageService"],
