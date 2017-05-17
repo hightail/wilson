@@ -22,7 +22,8 @@
       "enabled":    false,
       "enableLogs": false
     },
-    "debugInfoEnabled": false
+    "debugInfoEnabled": false,
+    "defaultCtrlAs": false
   },
   "server" : {
     "deploy": {
