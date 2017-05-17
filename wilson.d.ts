@@ -67,6 +67,10 @@ interface Wilson {
   getActivePage(): boolean;
   getActiveComponent(componentId: string): Object;
   getActiveComponentList(): Object[];
+  getActiveRouteInfo(): Object;
+  findComponentId(jqElement: Object): string;
+  destroyComponent(componentId: string): void;
+  router(definition: any[]|Function): void;
   filter(name: string, definition: any[]|Function): void;
   component(name: string, config: Object): void;
   behavior(name: string, definition: any[]|Function): void;
