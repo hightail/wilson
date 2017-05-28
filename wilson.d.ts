@@ -82,5 +82,64 @@ interface Wilson {
 
 }
 
+interface IWilsonExtendedScope extends angular.IScope {
+  // Wilson Scope Decorations
+  $root: IWilsonExtendedRootScope;
+  component: IWilsonComponentInfo;
+  on: IWilsonEventHelper;
+  storage: IWilsonStorageHelper;
+  state: {[key: string]: Function|boolean|string};
+
+  translate(text: string, options: object): string;
+  defaultValue(propertyName: string, defaultValue: any): any;
+  triggerDigest(): angular.IPromise;
+  bindToDigest(method: Function, context: any): Function;
+  stateMachine(config: Object): void;
+
+  $broadcastRoot(name: string, ...args: any[]): angular.IAngularEvent;
+
+  onDependenciesReady(): void;
+  onDependenciesError(): void;
+}
+
+interface IWilsonExtendedRootScope extends angular.IRootScopeService {
+  triggerDigest(): angular.IPromise;
+  bindToDigest(method: Function, context: any): Function;
+}
+
+interface IWilsonStorageHelper {
+  get(key: string, defaultValue: any): any;
+  set(keyValueHash: Object): Object;
+  set(key: string, value: any): Object;
+}
+
+interface IWilsonEventHelper {
+  event(name: string, listener: (event: angular.IAngularEvent, ...args: any[]) => any): () => void;
+
+  watch(watchExpression: string, listener?: string, objectEquality?: boolean): () => void;
+  watch<T>(watchExpression: string, listener?: (newValue: T, oldValue: T, scope: angular.IScope) => any, objectEquality?: boolean): () => void;
+  watch(watchExpression: (scope: angular.IScope) => any, listener?: string, objectEquality?: boolean): () => void;
+  watch<T>(watchExpression: (scope: angular.IScope) => T, listener?: (newValue: T, oldValue: T, scope: angular.IScope) => any, objectEquality?: boolean): () => void;
+
+  signal(signal: Object, handler: Function): void;
+
+  digest(handler: Function): void;
+}
+
+interface IWilsonComponentInfo {
+  id: string;
+  name: string;
+}
+
+interface IWilsonComponent {
+  scope: IWilsonExtendedScope;
+  component: IWilsonComponentInfo;
+  on: IWilsonEventHelper;
+  storage: IWilsonStorageHelper;
+}
 
 declare var wilson: Wilson;
+
+declare var $scope: IWilsonExtendedScope;
+
+declare var $rootScope: IWilsonExtendedRootScope;
