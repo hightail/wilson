@@ -10,18 +10,22 @@
 describe('Core', function() {
 
   describe('Wilson', function () {
-    var rootScope     = null;
-    var injector      = null;
-    var compile       = null;
-    var templateCache = null;
+    var rootScope           = null;
+    var injector            = null;
+    var compile             = null;
+    var templateCache       = null;
+    var WilsonEventHelper   = null;
+    var WilsonStorageHelper = null;
 
     // Establish Test Setup
     beforeEach(module('testWilson'));
     beforeEach(inject(function($injector) {
-      injector      = $injector;
-      rootScope     = $injector.get('$rootScope');
-      compile       = $injector.get('$compile');
-      templateCache = $injector.get('$templateCache');
+      injector            = $injector;
+      rootScope           = $injector.get('$rootScope');
+      compile             = $injector.get('$compile');
+      templateCache       = $injector.get('$templateCache');
+      WilsonEventHelper   = $injector.get('WilsonEventHelper');
+      WilsonStorageHelper = $injector.get('WilsonStorageHelper');
     }));
 
 
@@ -129,6 +133,9 @@ describe('Core', function() {
 
       expect(wilson.service).toBeDefined();
       expect(typeof wilson.service).toBe('function');
+
+      expect(wilson.router).toBeDefined();
+      expect(typeof wilson.router).toBe('function');
 
       // Alias Methods
       expect(wilson.class).toBeDefined();
@@ -270,24 +277,26 @@ describe('Core', function() {
 
         // Ensure that this is indeed our test-component
         expect(componentScope).toBeDefined();
-        expect(componentScope.componentCName).toBe('wls-viii-test-component');
+        expect(componentScope.component.name).toBe('wls-viii-test-component');
+
+        expect(componentScope.component.id).toBeDefined();
+        expect(typeof componentScope.component.id).toBe('string');
+        expect(_.isEmpty(componentScope.component.id)).toBe(false);
 
         expect(componentScope.data).toBeDefined();
         expect(typeof componentScope.data).toBe('object');
         expect(componentScope.data.test).toBe('SUCCESS');
 
         // Verify all necessary scope decorations
-        expect(componentScope.parentComponent).toBeNull();
-
-        expect(componentScope.stateMachine).toBeDefined();
-        expect(typeof componentScope.stateMachine).toBe('object');
+        expect(componentScope.state).toBeDefined();
+        expect(typeof componentScope.state).toBe('object');
 
 
         expect(componentScope.translate).toBeDefined();
         expect(typeof componentScope.translate).toBe('function');
 
-        expect(componentScope.overrideText).toBeDefined();
-        expect(typeof componentScope.overrideText).toBe('function');
+        expect(componentScope.stateMachine).toBeDefined();
+        expect(typeof componentScope.stateMachine).toBe('function');
 
         expect(componentScope.defaultValue).toBeDefined();
         expect(typeof componentScope.defaultValue).toBe('function');
@@ -297,6 +306,14 @@ describe('Core', function() {
 
         expect(componentScope.bindToDigest).toBeDefined();
         expect(typeof componentScope.bindToDigest).toBe('function');
+
+        expect(componentScope.on).toBeDefined();
+        expect(typeof componentScope.on).toBe('object');
+        expect(componentScope.on instanceof WilsonEventHelper).toBe(true);
+
+        expect(componentScope.storage).toBeDefined();
+        expect(typeof componentScope.storage).toBe('object');
+        expect(componentScope.storage instanceof WilsonStorageHelper).toBe(true);
 
         done();
       }, 10);
@@ -332,7 +349,7 @@ describe('Core', function() {
 
         // Ensure that this is indeed our outer parent scope
         expect(componentScope).toBeDefined();
-        expect(componentScope.componentCName).toBe('wls-ix-test-outer-parent');
+        expect(componentScope.component.name).toBe('wls-ix-test-outer-parent');
 
         // Ensure that the inner component has compiled and is present
         var childElem = element.find('.ht-wls-ix-test-inner-child');
@@ -341,17 +358,12 @@ describe('Core', function() {
         // Ensure that the child has the proper inner scope
         var childScope = childElem.find(':first-child').scope();
         expect(childScope).toBeDefined();
-        expect(childScope.componentCName).toBe('wls-ix-test-inner-child');
-
-        // Ensure that the parent is decorated appropriately
-        expect(childScope.parentComponent).toBeDefined();
-        expect(childScope.parentComponent).toBe(componentScope);
-        expect(childScope.parentComponent.componentCName).toBe('wls-ix-test-outer-parent');
+        expect(childScope.component.name).toBe('wls-ix-test-inner-child');
 
         // Now ensure that our scope has been properly exposed onto the parent
         expect(componentScope.innerChild).toBeDefined();
         expect(componentScope.innerChild).toBe(childScope);
-        expect(componentScope.innerChild.componentCName).toBe('wls-ix-test-inner-child');
+        expect(componentScope.innerChild.component.name).toBe('wls-ix-test-inner-child');
 
         done();
       }, 10);
