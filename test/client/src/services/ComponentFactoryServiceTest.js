@@ -10,23 +10,27 @@
 describe('Services', function() {
 
   describe('ComponentFactoryService', function () {
-    var ComponentFactoryService  = null;
-    var rootScope                = null;
-    var scope                    = null;
-    var controller               = null;
-    var element                  = null;
-    var attrs                    = null;
+    var ComponentFactoryService   = null;
+    var rootScope                 = null;
+    var scope                     = null;
+    var controller                = null;
+    var element                   = null;
+    var attrs                     = null;
+    var WilsonEventHelper         = null;
+    var WilsonStorageHelper       = null;
 
     // Establish Test Setup
     beforeEach(module('testWilson'));
     beforeEach(inject(function($injector) {
       ComponentFactoryService = $injector.get('ComponentFactoryService');
+      WilsonEventHelper       = $injector.get('WilsonEventHelper');
+      WilsonStorageHelper     = $injector.get('WilsonStorageHelper');
       rootScope               = $injector.get('$rootScope');
 
       scope                   = rootScope.$new(true);
       element                 = angular.element('<div></div>');
       attrs                   = {};
-      controller              = {};
+      controller              = [function(){}];
     }));
 
 
@@ -39,104 +43,33 @@ describe('Services', function() {
     // region test suite
 
     runTest('ComponentFactoryService-1000-01', 'Should have proper service interface.', function() {
-      expect(typeof ComponentFactoryService.init).toBe('function');
+      expect(typeof ComponentFactoryService.create).toBe('function');
     });
 
 
-    runTest('ComponentFactoryService-1000-02', 'Should decorate proper componentCName onto the scope and controller.', function() {
+    runTest('ComponentFactoryService-1000-02', 'Should decorate proper component information onto the scope.', function() {
 
       // Initialize component
-      ComponentFactoryService.init('test-component', scope, element, attrs, controller);
+      ComponentFactoryService.create('12345', 'test-component', controller,  this, null, scope, element, attrs, {});
 
-      expect(scope.componentCName).toBe('test-component');
-      expect(controller.componentCName).toBe('test-component');
+      expect(scope.component).toBeDefined();
+      expect(typeof scope.component).toBe('object');
+      expect(scope.component.id).toBe('12345');
+      expect(scope.component.name).toBe('test-component');
     });
 
 
-    runTest('ComponentFactoryService-1000-03', 'Should set parentComponent to null if no component parent exists.', function() {
+    runTest('ComponentFactoryService-1000-03', 'Should decorate proper component methods onto the scope.', function() {
 
       // Initialize component
-      ComponentFactoryService.init('test-component', scope, element, attrs, controller);
-
-      expect(scope.parentComponent).toBeNull();
-
-    });
-
-
-    runTest('ComponentFactoryService-1000-04', 'Should decorate the parentComponent scope if a parent wilson component exists.', function() {
-
-      // Create a fake parent scope
-      var parentScope = rootScope.$new(true);
-      parentScope.componentCName = 'my-parent';
-
-      // Initialize component with a new isolate scope of our fake parent
-      var componentScope = parentScope.$new(true);
-      ComponentFactoryService.init('test-component', componentScope, element, attrs, controller);
-
-      expect(componentScope.parentComponent).toBeDefined();
-      expect(componentScope.parentComponent).toBe(parentScope);
-      expect(componentScope.parentComponent.componentCName).toBe('my-parent');
-
-    });
-
-
-    runTest('ComponentFactoryService-1000-05', 'Should decorate proper controller methods.', function() {
-
-      // Initialize component
-      ComponentFactoryService.init('test-component', scope, element, attrs, controller);
+      ComponentFactoryService.create('12345', 'test-component', controller,  this, null, scope, element, attrs, {});
 
       // Test for appropriate decorations
-      expect(controller.setState).toBeDefined();
-      expect(typeof controller.setState).toBe('function');
-
-      expect(controller.getPersistentValue).toBeDefined();
-      expect(typeof controller.getPersistentValue).toBe('function');
-
-      expect(controller.setPersistentValue).toBeDefined();
-      expect(typeof controller.setPersistentValue).toBe('function');
-
-      expect(controller.setPersistentValues).toBeDefined();
-      expect(typeof controller.setPersistentValues).toBe('function');
-
-      expect(controller.watchAndPersist).toBeDefined();
-      expect(typeof controller.watchAndPersist).toBe('function');
-
-
-      expect(controller.auto).toBeDefined();
-      expect(typeof controller.auto).toBe('object');
-
-      expect(controller.auto.on).toBeDefined();
-      expect(typeof controller.auto.on).toBe('function');
-
-      expect(controller.auto.add).toBeDefined();
-      expect(typeof controller.auto.add).toBe('function');
-
-      expect(controller.auto.watch).toBeDefined();
-      expect(typeof controller.auto.watch).toBe('function');
-
-      expect(controller.auto.afterDigest).toBeDefined();
-      expect(typeof controller.auto.afterDigest).toBe('function');
-    });
-
-
-    runTest('ComponentFactoryService-1000-06', 'Should decorate proper scope methods.', function() {
-
-      // Initialize component
-      ComponentFactoryService.init('test-component', scope, element, attrs, controller);
-
-      // Test for appropriate decorations
-      expect(scope.componentCName).toBe('test-component');
-      expect(scope.parentComponent).toBeNull();
-
-      expect(scope.stateMachine).toBeDefined();
-      expect(typeof scope.stateMachine).toBe('object');
-
-
       expect(scope.translate).toBeDefined();
       expect(typeof scope.translate).toBe('function');
 
-      expect(scope.overrideText).toBeDefined();
-      expect(typeof scope.overrideText).toBe('function');
+      expect(scope.stateMachine).toBeDefined();
+      expect(typeof scope.stateMachine).toBe('function');
 
       expect(scope.defaultValue).toBeDefined();
       expect(typeof scope.defaultValue).toBe('function');
@@ -147,32 +80,43 @@ describe('Services', function() {
       expect(scope.bindToDigest).toBeDefined();
       expect(typeof scope.bindToDigest).toBe('function');
 
+
+      // Test for appropriate storage interface
+      expect(scope.storage).toBeDefined();
+      expect(typeof scope.storage).toBe('object');
+      expect(scope.storage instanceof WilsonStorageHelper).toBe(true);
+
+
+      // Test for appropriate event handler interface
+      expect(scope.on).toBeDefined();
+      expect(typeof scope.on).toBe('object');
+      expect(scope.on instanceof WilsonEventHelper).toBe(true);
+
     });
 
 
-    runTest('ComponentFactoryService-1000-07', 'Should initialize with proper current state.', function() {
+    runTest('ComponentFactoryService-1000-04', 'Should initialize with proper initial state.', function() {
 
       // Initialize component
-      ComponentFactoryService.init('test-component', scope, element, attrs, controller);
+      ComponentFactoryService.create('12345', 'test-component', controller,  this, null, scope, element, attrs, {});
 
-      expect(scope.stateMachine).toBeDefined();
-      expect(typeof scope.stateMachine).toBe('object');
+      expect(scope.state).toBeDefined();
+      expect(typeof scope.state).toBe('object');
 
-      expect(scope.stateMachine.current).toBeDefined();
-      expect(scope.stateMachine.current).toBe('NoStateMachine');
+      expect(scope.state.current).toBeDefined();
+      expect(scope.state.current).toBe('NA');
 
     });
 
 
-    runTest('ComponentFactoryService-1000-08', 'Should not expose scope on parent by default.', function() {
+    runTest('ComponentFactoryService-1000-05', 'Should not expose scope on parent by default.', function() {
 
       // Create a fake parent scope
       var parentScope = rootScope.$new(true);
-      parentScope.componentCName = 'my-parent';
 
       // Initialize component
       var componentScope = parentScope.$new(true);
-      ComponentFactoryService.init('test-component', componentScope, element, attrs, controller);
+      ComponentFactoryService.create('12345', 'test-component', controller,  this, parentScope, componentScope, element, attrs, {});
 
       _.each(parentScope, function(val, key) {
         if (!_.startsWith(key, '$')) {
@@ -183,19 +127,41 @@ describe('Services', function() {
     });
 
 
-    runTest('ComponentFactoryService-1000-09', 'Should expose scope on parent if attribute specified.', function() {
+    runTest('ComponentFactoryService-1000-06', 'Should expose scope on parent if "expose" attribute is specified (Deprecated legacy support).', function() {
 
       // Create a fake parent scope
       var parentScope = rootScope.$new(true);
-      parentScope.componentCName = 'my-parent';
 
       // Initialize component
       var componentScope = parentScope.$new(true);
-      ComponentFactoryService.init('test-component', componentScope, element, { expose: 'testComponent' }, controller);
+      ComponentFactoryService.create('12345', 'test-component', controller,  this, parentScope, componentScope, element, { expose: 'testComponent' }, {});
 
       expect(parentScope.testComponent).toBeDefined();
       expect(parentScope.testComponent).toBe(componentScope);
 
+    });
+
+
+    runTest('ComponentFactoryService-1000-07', 'Should expose specific scope methods on parent if the "exports" attribute is specified.', function() {
+
+      // Create a fake parent scope
+      var parentScope = rootScope.$new(true);
+
+      // Initialize component
+      var componentScope = parentScope.$new(true);
+
+      componentScope.foo = function foo() { };
+      componentScope.bar = function bar() { };
+
+      ComponentFactoryService.create('12345', 'test-component', controller,  this, parentScope, componentScope, element, { expose: 'testComponent'}, {
+        exports: { foo: 'foo' }
+      });
+
+      expect(parentScope.testComponent).toBeDefined();
+      expect(typeof parentScope.testComponent).toBe('object');
+      expect(parentScope.testComponent.foo).toBeDefined();
+      expect(typeof parentScope.testComponent.foo).toBe('function');
+      expect(parentScope.testComponent.bar).toBeUndefined();
     });
 
     // endregion

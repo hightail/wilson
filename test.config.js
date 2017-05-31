@@ -35,6 +35,7 @@ module.exports = function(config) {
 
       // All Wilson Source Files
       'lib/client/src/modules/*.js',
+      'lib/client/src/classes/*.js',
       'lib/client/src/services/*.js',
 
       // Test Wilson App
