@@ -1,7 +1,8 @@
 # Wilson CHANGELOG
 
 # 4.0.0
-- Remove AppStateService - move functionality directly to components
+- Removed AppStateService - functionality moved directly to components
+- Removed TranslationOverrideService as it was no longer necessary
 - Added new **getActiveRouteInfo** method to wilson (allows removal of AppStateService)
 - Added new **router** construct on wilson for declaring a router (aka routing service) to replace IRouteService
 - Implemented a default router to be used if none is specified in the wilson-config
