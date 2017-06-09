@@ -104,7 +104,7 @@ describe('Services', function() {
       expect(typeof scope.state).toBe('object');
 
       expect(scope.state.current).toBeDefined();
-      expect(scope.state.current).toBe('NA');
+      expect(scope.state.current).toBe(null);
 
     });
 
