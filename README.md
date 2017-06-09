@@ -59,7 +59,7 @@ http.createServer(app).listen(app.get('port'), function() {
 ```html
 <html id="ng-app" ng-app="myApp">
   <head>
-    <script type="stylesheet" src="/client/appearence/{{wilsonConfig.tags.brand}}/my.css"></script>
+    <script type="stylesheet" src="/client/styles/{{wilsonConfig.tags.brand}}/my.css"></script>
   </head>
   <body>
     
