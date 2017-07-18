@@ -47,7 +47,7 @@
       "routeService": "/client/router.js"
     },
     "dependencies": {
-      "ignored": ["localStorageService"],
+      "ignored": ["localStorageService", "WilsonUtils", "WilsonRouter", "WilsonLogger"],
       "core": [
         "AppStateService",
         "ComponentFactoryService",
