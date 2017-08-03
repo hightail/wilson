@@ -119,8 +119,8 @@ describe('Core', function() {
       expect(wilson.getActiveComponentList).toBeDefined();
       expect(typeof wilson.getActiveComponentList).toBe('function');
 
-      expect(wilson.getActiveRouteInfo).toBeDefined();
-      expect(typeof wilson.getActiveRouteInfo).toBe('function');
+      expect(wilson.routeInfo).toBeDefined();
+      expect(typeof wilson.routeInfo).toBe('object');
 
       expect(wilson.filter).toBeDefined();
       expect(typeof wilson.filter).toBe('function');

@@ -58,16 +58,16 @@ interface WilsonLogger {
 interface Wilson {
 
   // Properties
-  utils:  WilsonUtils;
-  log:    WilsonLogger;
-  config: Object;
+  utils:      WilsonUtils;
+  log:        WilsonLogger;
+  config:     Object;
+  routeInfo:  Object;
 
   // Public Methods
   setAppConfig(config: Object): void;
   getActivePage(): boolean;
   getActiveComponent(componentId: string): Object;
   getActiveComponentList(): Object[];
-  getActiveRouteInfo(): Object;
   findComponentId(jqElement: Object): string;
   destroyComponent(componentId: string): void;
   router(definition: any[]|Function): void;
