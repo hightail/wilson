@@ -124,6 +124,8 @@ interface IWilsonEventHelper {
   signal(signal: Object, handler: Function): void;
 
   digest(handler: Function): void;
+
+  pageUnload(handler: Function, includeLocalNav: boolean): () => void;
 }
 
 interface IWilsonComponentInfo {
