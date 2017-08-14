@@ -34,7 +34,6 @@
     "sprintf-js": "1.0.3",
     "lodash": "4.15.0",
     "lz-string": "1.4.4",
-    "prerender-node": "2.2.0",
     "q": "1.4.1",
     "q-io": "1.13.2",
     "strip-json-comments": "2.0.1",
