@@ -32,7 +32,7 @@
     "hbs": "4.0.0",
     "i18next-node-stable": "1.7.11",
     "sprintf-js": "1.0.3",
-    "lodash": "4.15.0",
+    "lodash": "4.17.4",
     "lz-string": "1.4.4",
     "q": "1.4.1",
     "q-io": "1.13.2",
@@ -61,7 +61,6 @@
     "karma-jasmine": "0.3.8",
     "karma-phantomjs-launcher": "1.0.0",
     "karma-spec-reporter": "0.0.25",
-    "lodash": "4.17.4",
     "phantomjs-prebuilt": "2.1.7"
   }
 }
