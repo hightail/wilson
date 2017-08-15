@@ -58,15 +58,19 @@ interface WilsonLogger {
 interface Wilson {
 
   // Properties
-  utils:  WilsonUtils;
-  log:    WilsonLogger;
-  config: Object;
+  utils:      WilsonUtils;
+  log:        WilsonLogger;
+  config:     Object;
+  routeInfo:  Object;
 
   // Public Methods
   setAppConfig(config: Object): void;
   getActivePage(): boolean;
   getActiveComponent(componentId: string): Object;
   getActiveComponentList(): Object[];
+  findComponentId(jqElement: Object): string;
+  destroyComponent(componentId: string): void;
+  router(definition: any[]|Function): void;
   filter(name: string, definition: any[]|Function): void;
   component(name: string, config: Object): void;
   behavior(name: string, definition: any[]|Function): void;
@@ -78,5 +82,66 @@ interface Wilson {
 
 }
 
+interface IWilsonExtendedScope extends angular.IScope {
+  // Wilson Scope Decorations
+  $root: IWilsonExtendedRootScope;
+  component: IWilsonComponentInfo;
+  on: IWilsonEventHelper;
+  storage: IWilsonStorageHelper;
+  state: {[key: string]: Function|boolean|string};
+
+  translate(text: string, options: object): string;
+  defaultValue(propertyName: string, defaultValue: any): any;
+  triggerDigest(): angular.IPromise;
+  bindToDigest(method: Function, context: any): Function;
+  stateMachine(config: Object): void;
+
+  $broadcastRoot(name: string, ...args: any[]): angular.IAngularEvent;
+
+  onDependenciesReady(): void;
+  onDependenciesError(): void;
+}
+
+interface IWilsonExtendedRootScope extends angular.IRootScopeService {
+  triggerDigest(): angular.IPromise;
+  bindToDigest(method: Function, context: any): Function;
+}
+
+interface IWilsonStorageHelper {
+  get(key: string, defaultValue: any): any;
+  set(keyValueHash: Object): Object;
+  set(key: string, value: any): Object;
+}
+
+interface IWilsonEventHelper {
+  event(name: string, listener: (event: angular.IAngularEvent, ...args: any[]) => any): () => void;
+
+  watch(watchExpression: string, listener?: string, objectEquality?: boolean): () => void;
+  watch<T>(watchExpression: string, listener?: (newValue: T, oldValue: T, scope: angular.IScope) => any, objectEquality?: boolean): () => void;
+  watch(watchExpression: (scope: angular.IScope) => any, listener?: string, objectEquality?: boolean): () => void;
+  watch<T>(watchExpression: (scope: angular.IScope) => T, listener?: (newValue: T, oldValue: T, scope: angular.IScope) => any, objectEquality?: boolean): () => void;
+
+  signal(signal: Object, handler: Function): void;
+
+  digest(handler: Function): void;
+
+  pageUnload(handler: Function, includeLocalNav: boolean): () => void;
+}
+
+interface IWilsonComponentInfo {
+  id: string;
+  name: string;
+}
+
+interface IWilsonComponent {
+  scope: IWilsonExtendedScope;
+  component: IWilsonComponentInfo;
+  on: IWilsonEventHelper;
+  storage: IWilsonStorageHelper;
+}
 
 declare var wilson: Wilson;
+
+declare var $scope: IWilsonExtendedScope;
+
+declare var $rootScope: IWilsonExtendedRootScope;

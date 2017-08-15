@@ -18,10 +18,6 @@
       "clientSafeNamespaces": "all"
     },
     "cdn": false,
-    "prerender": {
-      "enabled":    false,
-      "enableLogs": false
-    },
     "debugInfoEnabled": false
   },
   "server" : {
@@ -32,6 +28,7 @@
     },
     "projectPaths": {
       "root": ".",
+      "index": "/server/templates/index.hbs",
       "clientApp": "/client/app.js",
       "components": "/client/src/components",
       "behaviors": "/client/src/behaviors",
@@ -42,21 +39,19 @@
       "filters": "/client/src/filters",
       "guides":  "/client/src/guides",
       "tagMiddleware": "/server/tag-middleware",
+      "locales": "/client/locales",
       "routes": "/client/routing.json",
-      "IRouteService": "/client/src/services/IRouteService.js",
-      "locales": "/client/locales"
+      "routeService": "/client/router.js"
     },
     "dependencies": {
-      "ignored": ["localStorageService"],
+      "ignored": ["localStorageService", "WilsonUtils", "WilsonRouter", "WilsonLogger"],
       "core": [
-        "AppStateService",
         "ComponentFactoryService",
         "ComponentLoaderService",
         "i18nextService",
         "ResourceLoaderService",
         "StateMachineService",
-        "ComponentPrerenderService",
-        "DeprecatedFunctionService"
+        "WindowUnloadService"
       ],
       "selectors": {
         "component": "ht",
