@@ -18,10 +18,6 @@
       "clientSafeNamespaces": "all"
     },
     "cdn": false,
-    "prerender": {
-      "enabled":    false,
-      "enableLogs": false
-    },
     "debugInfoEnabled": false
   },
   "server" : {
@@ -50,14 +46,12 @@
     "dependencies": {
       "ignored": ["localStorageService", "WilsonUtils", "WilsonRouter", "WilsonLogger"],
       "core": [
-        "AppStateService",
         "ComponentFactoryService",
         "ComponentLoaderService",
         "i18nextService",
         "ResourceLoaderService",
         "StateMachineService",
-        "ComponentPrerenderService",
-        "DeprecatedFunctionService"
+        "WindowUnloadService"
       ],
       "selectors": {
         "component": "ht",
