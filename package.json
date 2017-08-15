@@ -1,10 +1,10 @@
 {
   "name": "wilson",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "description": "An application framework based on Nodejs and Angularjs designed to bring together all of the ingredients needed to create structured, dynamic, large-scale web apps.",
   "main": "lib/server/wilson.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   "keywords": [
     "wilson",
     "framework",
-    "angular",
+    "angularjs",
     "node",
     "application",
     "awesome"
@@ -32,9 +32,8 @@
     "hbs": "4.0.0",
     "i18next-node-stable": "1.7.11",
     "sprintf-js": "1.0.3",
-    "lodash": "4.15.0",
+    "lodash": "4.17.4",
     "lz-string": "1.4.4",
-    "prerender-node": "2.2.0",
     "q": "1.4.1",
     "q-io": "1.13.2",
     "strip-json-comments": "2.0.1",
@@ -57,11 +56,11 @@
     "jasmine-jquery": "2.1.1",
     "javascript-state-machine": "2.3.5",
     "jquery": "3.2.1",
+    "signals": "1.0.0",
     "karma": "0.13.22",
     "karma-jasmine": "0.3.8",
     "karma-phantomjs-launcher": "1.0.0",
     "karma-spec-reporter": "0.0.25",
-    "lodash": "4.17.4",
     "phantomjs-prebuilt": "2.1.7"
   }
 }

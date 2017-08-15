@@ -1,0 +1,17 @@
+/**
+* Wilson Core Templates
+*
+* @author hunter.novak
+*
+* @copyright (c) 2017 Hightail Inc. All Rights Reserved
+*/
+'use strict';
+angular.module('wilson.coreTemplates', []).run(['$templateCache', function($templateCache) {
+
+{{#each templates}}
+  /**** Template Def ****/
+  $templateCache.put('{{id}}', "{{{data}}}");
+
+{{/each}}
+
+}]);
