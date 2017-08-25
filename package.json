@@ -1,6 +1,6 @@
 {
   "name": "wilson",
-  "version": "4.0.5",
+  "version": "4.1.0",
   "description": "An application framework based on Nodejs and Angularjs designed to bring together all of the ingredients needed to create structured, dynamic, large-scale web apps.",
   "main": "lib/server/wilson.js",
   "scripts": {
