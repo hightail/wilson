@@ -1,6 +1,6 @@
 # Wilson CHANGELOG
 
-# v4.1.1
+# v4.1.2
 - Added missing coreTemplates module dependency
 - Updated to allow extended-scope behaviors to have $scope.on functionality.
 - Fixed missing ComponentLoaderService dependency in wilson run module
