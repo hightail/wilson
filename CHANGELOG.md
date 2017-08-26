@@ -1,6 +1,16 @@
 # Wilson CHANGELOG
 
-# 4.0.0
+# v4.1.1
+- Added missing coreTemplates module dependency
+- Updated to allow extended-scope behaviors to have $scope.on functionality.
+- Fixed missing ComponentLoaderService dependency in wilson run module
+- Added missing dependency injection in ComponentFactoryService
+- Bug fix for behavior script matching in production mode
+- Fixed conditional bug with falsey inherited parent component properties
+- Fixed bug with component $broadcastRoot not actually firing on the $rootScope context
+- Fixed bug with destroyComponent method that was causing an undefined reference error
+
+# v4.0.0
 - Removed AppStateService - functionality moved directly to components
 - Removed TranslationOverrideService as it was no longer necessary
 - Added new **routeInfo** virtual property to wilson (allows removal of AppStateService)
