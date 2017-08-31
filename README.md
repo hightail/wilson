@@ -21,12 +21,12 @@ var express = require('express'),
 var app = express();
 app.set('port', '3000');
 
-//Set up static assets
-app.use('/client', express.static(path.join(__dirname, '../client')));
-
 //Load wilson and initialize it
 var wilsonConfigJson = require('./config/wilson-config.json');
 var wilson = Wilson(app, wilsonConfigJson);
+
+//Set up static assets
+app.use(wilson.config.client.app.assetPath, express.static(path.join(__dirname, '../client')));
 
 //attach the wilson routes under mountpath '/wilson'
 app.use(wilson.config.client.app.mountpath, wilson.router);
