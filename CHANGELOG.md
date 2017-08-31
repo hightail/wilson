@@ -1,5 +1,10 @@
 # Wilson CHANGELOG
 
+# v4.2.0
+- Added support for versioned asset paths
+- Added support for styles in dependency resolutions given a configured styles directory
+- Removed error print on non-existent inherited methods when using the "inherit" property
+
 # v4.1.2
 - Added missing coreTemplates module dependency
 - Updated to allow extended-scope behaviors to have $scope.on functionality.
