@@ -4,7 +4,9 @@
       "version" : "0.0.0",
       "updateIntervalMillis": 3600000,
       "mountpath": "/wilson",
-      "autoLocalizeRoutes": true
+      "assetPath": "/client",
+      "autoLocalizeRoutes": true,
+      "useVersionedAssets": true
     },
     "i18n": {
       "lng": "en",
@@ -30,6 +32,7 @@
       "root": ".",
       "index": "/server/templates/index.hbs",
       "clientApp": "/client/app.js",
+      "styles": "/client/styles/exports/chunks",
       "components": "/client/src/components",
       "behaviors": "/client/src/behaviors",
       "services": "/client/src/services",
