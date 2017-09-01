@@ -1,5 +1,8 @@
 # Wilson CHANGELOG
 
+# 4.2.1
+- Added reverse loading of style dependencies to always use shallowest to deepest inclusion
+
 # v4.2.0
 - Added support for versioned asset paths
 - Added support for styles in dependency resolutions given a configured styles directory
