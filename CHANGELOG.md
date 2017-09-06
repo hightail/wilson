@@ -1,5 +1,8 @@
 # Wilson CHANGELOG
 
+# 4.2.2
+- Added support for CDN config in wilson-scripts handlebars helper
+
 # 4.2.1
 - Added reverse loading of style dependencies to always use shallowest to deepest inclusion
 
