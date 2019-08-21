@@ -1,8 +1,8 @@
-<script type="text/javascript" src="{{cdnHost}}{{mountpath}}/{{version}}/client.wilson.plugins{{#if minified}}.min{{/if}}.js"></script>
+<script type="text/javascript" nonce="{{{nonce}}}" src="{{cdnHost}}{{mountpath}}/{{version}}/client.wilson.plugins{{#if minified}}.min{{/if}}.js"></script>
 {{{pluginsMarkup}}}
-<script type="text/javascript" src="{{cdnHost}}{{mountpath}}/{{version}}/config/{{connectionHash}}"></script>
-<script type="text/javascript" src="{{cdnHost}}{{mountpath}}/{{version}}/templates/{{connectionHash}}"></script>
-<script type="text/javascript" src="{{cdnHost}}{{mountpath}}/{{version}}/client.wilson{{#if minified}}.min{{/if}}.js"></script>
-<script type="text/javascript" src="{{cdnHost}}{{mountpath}}/{{version}}/bundle"></script>
-{{#if routeService}}<script type="text/javascript" src="{{cdnHost}}{{routeService}}"></script>{{/if}}
-<script type="text/javascript" src="{{cdnHost}}{{clientApp}}"></script>
+<script type="text/javascript" nonce="{{{nonce}}}" src="{{cdnHost}}{{mountpath}}/{{version}}/config/{{connectionHash}}"></script>
+<script type="text/javascript" nonce="{{{nonce}}}" src="{{cdnHost}}{{mountpath}}/{{version}}/templates/{{connectionHash}}"></script>
+<script type="text/javascript" nonce="{{{nonce}}}" src="{{cdnHost}}{{mountpath}}/{{version}}/client.wilson{{#if minified}}.min{{/if}}.js"></script>
+<script type="text/javascript" nonce="{{{nonce}}}" src="{{cdnHost}}{{mountpath}}/{{version}}/bundle"></script>
+{{#if routeService}}<script nonce="{{{nonce}}}" type="text/javascript" src="{{cdnHost}}{{routeService}}"></script>{{/if}}
+<script type="text/javascript" nonce="{{{nonce}}}" src="{{cdnHost}}{{clientApp}}"></script>
