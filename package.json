@@ -55,7 +55,7 @@
     "jasmine-core": "2.4.1",
     "jasmine-jquery": "2.1.1",
     "javascript-state-machine": "2.3.5",
-    "jquery": "3.2.1",
+    "jquery": "3.4.1",
     "karma": "0.13.22",
     "karma-jasmine": "0.3.8",
     "karma-phantomjs-launcher": "1.0.0",
