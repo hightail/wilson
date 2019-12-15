@@ -28,6 +28,8 @@
     "angular": "1.7.1",
     "angular-route": "1.7.1",
     "angular-mocks": "1.7.1",
+    "angular-resource": "1.7.1",
+    "angular-sanitize": "1.7.1",
     "angular-local-storage": "0.5.2",
     "async": "1.5.2",
     "dependable": "0.2.5",
