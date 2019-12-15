@@ -25,6 +25,10 @@
   },
   "homepage": "http://wilsonjs.org",
   "dependencies": {
+    "angular": "1.7.1",
+    "angular-route": "1.7.1",
+    "angular-mocks": "1.7.1",
+    "angular-local-storage": "0.5.2",
     "async": "1.5.2",
     "dependable": "0.2.5",
     "express": "4.13.4",
@@ -43,10 +47,6 @@
     "xpath": "0.0.22"
   },
   "devDependencies": {
-    "angular": "1.7.1",
-    "angular-route": "1.7.1",
-    "angular-mocks": "1.7.1",
-    "angular-local-storage": "0.5.2",
     "gulp": "^3.9.1",
     "gulp-concat": "2.6.0",
     "gulp-rename": "1.2.2",
