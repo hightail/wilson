@@ -37,7 +37,7 @@
     "q": "1.4.1",
     "q-io": "1.13.6",
     "strip-json-comments": "2.0.1",
-    "underscore.string": "3.3.4",
+    "underscore.string": "3.3.5",
     "winston": "2.2.0",
     "xmldom": "0.1.22",
     "xpath": "0.0.22"
