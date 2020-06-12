@@ -43,7 +43,7 @@
     "xpath": "0.0.22"
   },
   "devDependencies": {
-    "angular": "1.7.1",
+    "angular": "1.7.9",
     "angular-route": "1.7.1",
     "angular-mocks": "1.7.1",
     "angular-local-storage": "0.5.2",
