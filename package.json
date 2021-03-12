@@ -39,7 +39,7 @@
     "strip-json-comments": "2.0.1",
     "underscore.string": "3.3.4",
     "winston": "2.2.0",
-    "xmldom": "0.1.22",
+    "xmldom": "0.5.0",
     "xpath": "0.0.22"
   },
   "devDependencies": {
