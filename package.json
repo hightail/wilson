@@ -29,7 +29,7 @@
     "dependable": "0.2.5",
     "express": "4.17.1",
     "glob": "7.0.0",
-    "hbs": "^4.1.1",
+    "hbs": "^4.1.2",
     "i18next-node-stable": "1.7.11",
     "lodash": "^4.17.21",
     "lz-string": "1.4.4",
