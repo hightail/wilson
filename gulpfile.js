@@ -6,20 +6,38 @@ var gulp          = require('gulp'),
     rename        = require('gulp-rename'),
     uglify        = require('gulp-uglify'),
     pkg           = require('./package.json'),
-    karmaServer   = require('karma').Server;
+    karmaServer   = require('karma').Server,
+    browserify    = require("browserify"),
+    tsify         = require("tsify"),
+    sourcemaps    = require("gulp-sourcemaps"),
+    buffer        = require("vinyl-buffer");
 
 
 gulp.task('build', function() {
-  return gulp.src(['lib/client/src/wilson.js', 'lib/client/src/**/*.js'])
-    .pipe(concat('client.wilson.js'))
-    .pipe(gulp.dest('lib/client'))
-    .pipe(uglify({
-      output: {
-        'preamble': '/*** Wilson Client Framework  v' + pkg.version + ' -- ' + (new Date().toUTCString()) + ' ***/\n'
-      }
-    }))
-    .pipe(rename('client.wilson.min.js'))
-    .pipe(gulp.dest('lib/client'));
+  return browserify({
+    basedir: ".",
+    debug: true,
+    entries: ['lib/client/src/wilson.js', 'lib/client/src/**/*.js'],
+    cache: {},
+    packageCache: {},
+  })
+  .plugin(tsify)
+  .transform('babelify', {
+    presets: ['es2015'],
+    extentions: ['.js', '.ts']
+  })
+  .pipe(concat('client.wilson.js'))
+  .pipe(uglify({
+    output: {
+      'preamble': '/*** Wilson Client Framework  v' + pkg.version + ' -- ' + (new Date().toUTCString()) + ' ***/\n'
+    }
+  }))
+  .bundle()
+  .pipe(buffer())
+  .pipe(sourcemaps.init({ loadMaps: true }))
+  .pipe(sourcemaps.write('./'))
+  .pipe(rename('client.wilson.min.js'))
+  .pipe(gulp.dest('lib/client'))
 });
 
 gulp.task('build-plugins', function() {
@@ -50,9 +68,9 @@ gulp.task('test', function(done) {
 });
 
 
-gulp.task('dist', ['test', 'build-plugins', 'build']);
+gulp.task('dist', gulp.series('test', 'build-plugins', 'build'));
 
-gulp.task('default', ['build-plugins', 'build']);
+gulp.task('default', gulp.series('build-plugins', 'build'));
 
 
 
