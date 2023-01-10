@@ -3,7 +3,6 @@
   "version": "4.11.0",
   "description": "An application framework based on Nodejs and Angularjs designed to bring together all of the ingredients needed to create structured, dynamic, large-scale web apps.",
   "main": "lib/server/wilson.js",
-  "type": "commonjs",
   "scripts": {
     "test": "gulp test",
     "build": "gulp build"
