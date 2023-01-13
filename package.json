@@ -4,7 +4,8 @@
   "description": "An application framework based on Nodejs and Angularjs designed to bring together all of the ingredients needed to create structured, dynamic, large-scale web apps.",
   "main": "lib/server/wilson.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -27,14 +28,13 @@
   "dependencies": {
     "async": "1.5.2",
     "dependable": "0.2.5",
-    "express": "4.17.1",
+    "express": "4.18.2",
     "glob": "7.0.0",
-    "hbs": "^4.1.2",
+    "hbs": "4.1.2",
     "i18next-node-stable": "1.7.11",
-    "lodash": "^4.17.21",
+    "lodash": "4.17.21",
     "lz-string": "1.4.4",
     "q": "1.4.1",
-    "q-io": "1.13.6",
     "sprintf-js": "1.0.3",
     "strip-json-comments": "2.0.1",
     "underscore.string": "3.3.4",
@@ -43,11 +43,11 @@
     "xpath": "0.0.22"
   },
   "devDependencies": {
-    "angular": "1.7.1",
-    "angular-route": "1.7.1",
-    "angular-mocks": "1.7.1",
+    "angular": "1.8.3",
+    "angular-route": "1.8.3",
+    "angular-mocks": "1.8.3",
     "angular-local-storage": "0.5.2",
-    "gulp": "^3.9.1",
+    "gulp": "3.9.1",
     "gulp-concat": "2.6.0",
     "gulp-rename": "1.2.2",
     "gulp-uglify": "2.0.0",
@@ -56,11 +56,10 @@
     "jasmine-jquery": "2.1.1",
     "javascript-state-machine": "2.3.5",
     "jquery": "3.2.1",
-    "karma": "4.4.1",
+    "karma": "6.4.1",
     "karma-jasmine": "0.3.8",
-    "karma-phantomjs-launcher": "1.0.0",
+    "karma-chrome-launcher": "3.1.1",
     "karma-spec-reporter": "0.0.25",
-    "phantomjs-prebuilt": "2.1.7",
     "signals": "1.0.0"
   }
 }
