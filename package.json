@@ -30,7 +30,7 @@
     "async": "1.5.2",
     "dependable": "0.2.5",
     "express": "4.18.2",
-    "node-glob": "1.2.0",
+    "glob": "9.2.1",
     "hbs": "4.2.0",
     "i18next-node-stable": "1.7.11",
     "lodash": "4.17.21",
