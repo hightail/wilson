@@ -51,7 +51,6 @@
     "gulp-concat": "2.6.1",
     "gulp-rename": "1.2.2",
     "gulp-uglify": "2.0.0",
-    "i18next": "2.2.0",
     "jasmine-core": "2.4.1",
     "jasmine-jquery": "2.1.1",
     "javascript-state-machine": "2.3.5",
