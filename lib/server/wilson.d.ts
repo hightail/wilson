@@ -61,7 +61,7 @@ interface Wilson {
   utils:      WilsonUtils;
   log:        WilsonLogger;
   config:     Object;
-  routeInfo:  Object;
+  routeInfo:  { [key: string]: unknown };
 
   // Public Methods
   setAppConfig(config: Object): void;
