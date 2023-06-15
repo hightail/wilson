@@ -145,5 +145,3 @@ declare var wilson: Wilson;
 declare var $scope: IWilsonExtendedScope;
 
 declare var $rootScope: IWilsonExtendedRootScope;
-
-export { wilson, $scope, $rootScope };
