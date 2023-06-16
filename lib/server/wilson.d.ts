@@ -141,10 +141,7 @@ interface IWilsonComponent {
 }
 
 declare var wilson: Wilson;
-export default wilson;
 
 declare var $scope: IWilsonExtendedScope;
-export default $scope;
 
 declare var $rootScope: IWilsonExtendedRootScope;
-export default $rootScope;
