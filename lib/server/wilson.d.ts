@@ -140,10 +140,12 @@ interface IWilsonComponent {
   storage: IWilsonStorageHelper;
 }
 
+declare var $scope: IWilsonExtendedScope;
+
+declare var $rootScope: IWilsonExtendedRootScope;
+
 declare module 'wilson' {
   const wilson: Wilson;
 }
 
-declare var $scope: IWilsonExtendedScope;
-
-declare var $rootScope: IWilsonExtendedRootScope;
+export default wilson;
