@@ -1,11 +1,10 @@
 {
   "name": "wilson",
-  "version": "4.11.0",
+  "version": "4.12.0",
   "description": "An application framework based on Nodejs and Angularjs designed to bring together all of the ingredients needed to create structured, dynamic, large-scale web apps.",
   "main": "lib/server/wilson.js",
   "scripts": {
-    "test": "gulp test",
-    "build": "gulp build"
+    "build": "webpack --config webpack.plugins.config.js && webpack --config webpack.plugins.min.config.js && webpack --config webpack.client.config.js && webpack --config webpack.client.min.config.js"
   },
   "repository": {
     "type": "git",
@@ -47,10 +46,7 @@
     "angular-local-storage": "0.5.2",
     "angular-mocks": "1.8.3",
     "angular-route": "1.8.3",
-    "gulp": "3.9.1",
-    "gulp-concat": "2.6.1",
-    "gulp-rename": "1.2.2",
-    "gulp-uglify": "2.0.0",
+    "i18next": "2.2.0",
     "jasmine-core": "2.4.1",
     "jasmine-jquery": "2.1.1",
     "javascript-state-machine": "2.3.5",
@@ -59,6 +55,9 @@
     "karma-chrome-launcher": "3.1.1",
     "karma-jasmine": "0.3.8",
     "karma-spec-reporter": "0.0.25",
-    "signals": "1.0.0"
+    "signals": "1.0.0",
+    "terser-webpack-plugin": "^5.3.6",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }
