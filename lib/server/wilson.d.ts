@@ -61,7 +61,7 @@ interface Wilson {
   utils:      WilsonUtils;
   log:        WilsonLogger;
   config:     Object;
-  routeInfo:  Object;
+  routeInfo:  { [key: string]: unknown };
 
   // Public Methods
   setAppConfig(config: Object): void;
@@ -140,8 +140,12 @@ interface IWilsonComponent {
   storage: IWilsonStorageHelper;
 }
 
-declare var wilson: Wilson;
-
 declare var $scope: IWilsonExtendedScope;
 
 declare var $rootScope: IWilsonExtendedRootScope;
+
+declare module 'wilson' {
+  const wilson: Wilson;
+}
+
+export default wilson;
