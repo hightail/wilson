@@ -26,7 +26,7 @@
   },
   "homepage": "http://wilsonjs.org",
   "dependencies": {
-    "@xmldom/xmldom": "^0.8.6",
+    "@xmldom/xmldom": "^0.8.10",
     "async": "^3.2.5",
     "dependable": "0.2.5",
     "express": "4.18.2",
