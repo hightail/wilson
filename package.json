@@ -39,7 +39,7 @@
     "sprintf-js": "1.0.3",
     "strip-json-comments": "2.0.1",
     "underscore.string": "3.3.6",
-    "winston": "2.2.0",
+    "winston": "^3.13.0",
     "xpath": "0.0.22"
   },
   "devDependencies": {
