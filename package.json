@@ -1,6 +1,6 @@
 {
   "name": "wilson",
-  "version": "0.68.616241",
+  "version": "0.68.616242",
   "description": "An application framework based on Nodejs and Angularjs designed to bring together all of the ingredients needed to create structured, dynamic, large-scale web apps.",
   "main": "lib/server/wilson.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "sprintf-js": "1.0.3",
     "strip-json-comments": "2.0.1",
     "underscore.string": "3.3.6",
-    "winston": "^3.13.0",
+    "winston": "2.2.0",
     "xpath": "0.0.22"
   },
   "devDependencies": {
