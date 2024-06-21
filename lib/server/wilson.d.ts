@@ -17,7 +17,7 @@ interface WilsonUtils {
   spliceArray(targetArray: any[], startIdx?: number, endIdx?: number, replacements?: any[]): any[];
   replaceArray(destination: any[], source: any[]): void;
   clearArray(targetArray: any[]): void;
-  
+
   // Object Utilities
   clearObject(targetObj: Object): void;
   replaceObject(destination: Object, source: Object): void;
@@ -61,7 +61,7 @@ interface Wilson {
   utils:      WilsonUtils;
   log:        WilsonLogger;
   config:     Object;
-  routeInfo:  { [key: string]: unknown };
+  routeInfo:  Object;
 
   // Public Methods
   setAppConfig(config: Object): void;
@@ -140,12 +140,8 @@ interface IWilsonComponent {
   storage: IWilsonStorageHelper;
 }
 
+declare var wilson: Wilson;
+
 declare var $scope: IWilsonExtendedScope;
 
 declare var $rootScope: IWilsonExtendedRootScope;
-
-declare module 'wilson' {
-  const wilson: Wilson;
-}
-
-export default wilson;
